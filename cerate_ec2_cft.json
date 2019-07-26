@@ -1,0 +1,20 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Resources" : {
+    "WebServerInstance": {
+      "Type" : "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId" : "ami-0b898040803850657"
+        "InstanceType"   : "t2.micro",
+        
+    		}
+	}
+  },
+
+  "Outputs" : {
+    "WebsiteURL" : {
+      "Value" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]} ]]},
+      "Description" : "WordPress Website"
+    }
+  }
+}
